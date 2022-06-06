@@ -14,7 +14,7 @@ jobs:
     steps:
       - run:
           name: "Say hello"
-          command: "echo Hello $MY_NAME"
+          command: "echo Hello"
 
   say-world:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
@@ -26,13 +26,17 @@ jobs:
       - run:
           name: "Say world"
           command: "echo World!!!!"
+  print-name:
+    docker:
+      - image: cimg/node:13.8.0
+    steps:
+      - checkout
+      - run:
+          name: "Print Name"
+          command: |
+            echo $MY_NAME
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
-      - say-world:
-          requires:
-            - say-hello
+      - print-name

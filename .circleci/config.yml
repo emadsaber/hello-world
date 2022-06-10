@@ -36,9 +36,9 @@ jobs:
       - run:
           name: "Write file"
           command: |
-            echo "This is a test file" > ~/output.txt
+            echo "This is a test file" > output.txt
       - persist_to_workspace:
-          root: ~/
+          root: . 
           paths: 
             - output.txt
   read-from-file:
@@ -46,10 +46,10 @@ jobs:
       - image: cimg/node:13.8.0
     steps:
       - attach_workspace:
-          at: ~/
+          at: .
       - run: 
           name: "Print file contents"
-          command: cat ~/output.txt
+          command: cat output.txt
       
 
 workflows:

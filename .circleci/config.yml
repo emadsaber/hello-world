@@ -1,5 +1,7 @@
 version: 2.1
-
+defaults: &defaults
+  docker:
+      - image: cimg/node:13.8.0
 commands:
   say-text:
     description: "Writes the passed text into console"
@@ -11,8 +13,7 @@ commands:
       - run: echo << parameters.text >>
 jobs:
   print-text:
-    docker:
-      - image: cimg/node:13.8.0
+    <<: *defaults
     steps:
       - say-text:
           text: "Welcome to command"

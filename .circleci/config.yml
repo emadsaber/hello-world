@@ -56,5 +56,5 @@ workflows:
     jobs:
       - write-to-file
       - read-from-file:
-        - requires:
-            write-to-file
+         requires:
+          - write-to-file

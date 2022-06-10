@@ -47,10 +47,9 @@ jobs:
     steps:
       - run: 
           name: "Print file contents"
-          command: 
+          command: cat output.txt
       - attach_workspace:
           at: /tmp/workspace
-          run: cat output.txt
 
 workflows:
   say-hello-workflow:

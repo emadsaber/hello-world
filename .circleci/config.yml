@@ -12,12 +12,20 @@ commands:
     steps:
       - run: echo << parameters.text >>
 jobs:
-  print-text:
+  main-job:
+    <<: *defaults
+    steps:
+      - run: 
+          command: return 1
+    
+  error-handler:
     <<: *defaults
     steps:
       - say-text:
-          text: "Welcome to command"
+          text: "An error occurred in your main job"
+          when: on_fail
+        
 workflows:
   say-hello-workflow:
     jobs:
-      - print-text
+      - main-job

@@ -36,9 +36,9 @@ jobs:
       - run:
           name: "Write file"
           command: |
-            echo "This is a test file" > output.txt
+            echo "This is a test file" > ~/output.txt
       - persist_to_workspace:
-          root: .
+          root: ~/
           paths: 
             - output.txt
   read-from-file:
@@ -47,9 +47,9 @@ jobs:
     steps:
       - run: 
           name: "Print file contents"
-          command: cat output.txt
+          command: cat ~/output.txt
       - attach_workspace:
-          at: .
+          at: ~/
 
 workflows:
   say-hello-workflow:

@@ -45,11 +45,12 @@ jobs:
     docker:
       - image: cimg/node:13.8.0
     steps:
+      - attach_workspace:
+          at: ~/
       - run: 
           name: "Print file contents"
           command: cat ~/output.txt
-      - attach_workspace:
-          at: ~/
+      
 
 workflows:
   say-hello-workflow:

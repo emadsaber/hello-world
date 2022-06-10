@@ -16,13 +16,11 @@ jobs:
     <<: *defaults
     steps:
       - run: 
-          command: return 1
+          command: exit 1
     
-  error-handler:
-    <<: *defaults
-    steps:
-      - say-text:
-          text: "An error occurred in your main job"
+      - run:
+          name: Handle Error
+          command: echo "An error occurred in your main job"
           when: on_fail
         
 workflows:

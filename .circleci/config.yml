@@ -15,8 +15,7 @@ jobs:
   main-job:
     <<: *defaults
     steps:
-      - run: 
-          command: exit 1
+      - run: return 1
     
       - run:
           name: Handle Error

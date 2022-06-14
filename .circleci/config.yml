@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Install Ansible
           command: |
-            apk add --update-cache ansible
+            apk add --upgrade ansible
       - run:
           name: Run play book
           command: |
